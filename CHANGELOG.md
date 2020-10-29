@@ -1,280 +1,480 @@
-# Change Log
+# Node.js Buildpack Changelog
 
-## [1.8.0] 2019-08-26
-### Bug fixing
-- Rewrote the ISSUE_TEMPLATE
-- Deleted the copyright comments from all files, we only need to keep them inside our index.js and index.html
-- Added script that adds copyrights to the built app
-- Renamed all the files from `.jsx` to `.js`
-- Changed the `withStyles` function from Material-UI with the `makeStyles` function (integration with other frameworks should now be easy)
-- React Hooks is now supported
-### Major style changes
-- Renamed `assets/jss/material-dashboard-react/layouts/dashboardStyle.js` to `assets/jss/material-dashboard-react/layouts/adminStyle.js`
-### Deleted components
-### Added components
-### Deleted dependencies
-### Added dependencies
-+ gulp@4.0.2
-+ gulp-append-prepend@1.0.8
-### Updated dependencies
-```
-@material-ui/core         4.1.0   →    4.3.2
-@material-ui/icons        4.1.0   →    4.2.1
-react                    16.8.6   →   16.9.0
-react-dom                16.8.6   →   16.9.0
-react-scripts             3.0.1   →    3.1.0
-eslint-config-prettier    4.3.0   →    6.0.0
-@types/googlemaps        3.36.4   →   3.37.3
-ajv                      6.10.0   →   6.10.2
-typescript                3.5.1   →    3.5.3
-```
+## main
 
-## [1.7.0] 2019-06-19
-### Warning
-**All React Material products have now the same version, i.e. 1.7.0.**
-- **All linting errors are solved now, but due to google analytics stuff, we've needed to add target="_blank" to our links, so this lint error still exists.**
-### Bug fixing
-- Bugs from updated dependencies
-- Removed `.env` file, and replaced it with the `jsconfig.json` file
-- Changes caused by running [the prettier command](https://prettier.io/docs/en/install.html) for *.jsx*, *.js*, *.html* and *.css* files
-- Changed all string refs to `React.createRef()`
-- Added types validation in each component
-- Solved linting issues
-- Solved https://github.com/creativetimofficial/material-dashboard-react/issues/83
-### Major style changes
-### Deleted components
-### Added components
-### Deleted dependencies
-### Added dependencies
-- typescript@3.5.1 (To stop console warnings on install)
-### Updated dependencies
-```
-@material-ui/core          3.9.2   →    4.1.0
-@material-ui/icons         3.0.2   →    4.1.0
-chartist                  0.10.1   →   0.11.2
-history                    4.7.2   →    4.9.0
-prettier                  1.16.4   →   1.18.2
-prop-types                15.7.1   →   15.7.2
-react                     16.8.1   →   16.8.6
-react-dom                 16.8.1   →   16.8.6
-react-router-dom           4.3.1   →    5.0.1
-react-scripts              2.1.5   →    3.0.1
-react-swipeable-views     0.13.1   →   0.13.3
-eslint-config-prettier     4.0.0   →    4.3.0
-eslint-plugin-prettier     3.0.1   →    3.1.0
-@types/googlemaps        3.30.16   →   3.36.4
-ajv                        6.9.1   →   6.10.0
-```
+## v176 (2020-09-10)
+- Only run immutable cache in yarn 2 if caching enabled ([#832](https://github.com/heroku/heroku-buildpack-nodejs/pull/832))
+- Added Hatchet regression tests ([#833](https://github.com/heroku/heroku-buildpack-nodejs/pull/833))
+- Delete unused fixtures ([#835](https://github.com/heroku/heroku-buildpack-nodejs/pull/835))
+- Expand `npm ci` usage to 100% of builds ([#842](https://github.com/heroku/heroku-buildpack-nodejs/pull/842))
 
-## [1.6.0] 2019-02-13
-### Nice stuff
-- [Added RTL support](https://github.com/creativetimofficial/material-dashboard-react/issues/16)
-### Bug Fixing
-- [Added new script for npm](https://github.com/creativetimofficial/material-dashboard-react/issues/69)
-- Changed our buggy routing system, now it should work flawlessly, for more info, please refer to our [live docs here](https://demos.creative-tim.com/material-dashboard-react/#/documentation/routing-system)
-- [https://github.com/creativetimofficial/material-dashboard-react/issues/67](https://github.com/creativetimofficial/material-dashboard-react/issues/67)
-- [https://github.com/creativetimofficial/material-dashboard-react/issues/68](https://github.com/creativetimofficial/material-dashboard-react/issues/68)
-- [https://github.com/creativetimofficial/material-dashboard-react/issues/66](https://github.com/creativetimofficial/material-dashboard-react/issues/66)
-### Major style changes
-- Almost all styles have been changed due to new components, solved issues or [the prettier command](https://prettier.io/docs/en/install.html)
-### Major components changes
-- Changes caused by running [the prettier command](https://prettier.io/docs/en/install.html) for *.jsx*, *.js*, *.html* and *.css* files
-- **src/index.js**
-- **src/components/CustomTabs/CustomTabs.jsx**
-- **src/components/Header/Header.jsx**
-- **src/components/Sidebar/Sidebar.jsx**
-- **src/components/Snackbar/Snackbar.jsx**
-- **src/components/Snackbar/SnackbarContent.jsx**
-- **src/components/Tasks/Tasks.jsx**
-- **src/views/Notifications/Notifications.jsx**
-### New components
-- **src/components/FixedPlugin/FixedPlugin.jsx**(Left menu used by us for customization - due to this, we've had to add a link for the fonts awesome cdn)
-- **src/components/Header/RTLHeaderLinks.jsx**
-- **src/layouts/Admin.jsx** (instead of Dashboard)
-- **src/layouts/RTL.jsx**
-- **src/views/RTLPage/RTLPage.jsx**
-### Deleted components
-- **src/layouts/Dashboard/Dashboard.jsx** (renamed to Admin)
-- **src/routes/dashboard.jsx**
-- **src/routes/index.jsx**
-### Deleted dependencies
-- `babel-plugin-module-resolver` (because of the upgrade of `react-scripts`)
-- `babel-eslint` (because of the upgrade of `react-scripts`)
-- `eslint` (because of the upgrade of `react-scripts`)
-- `eslint-plugin-react` (because of the upgrade of `react-scripts`)
-- `npm-run-all`
-### Added dependencies
-- `history4.7.2`
-- `prop-types@15.6.2`
-- `prettier@1.16.4`
-### Updated dependencies
-- `@material-ui/core`                *3.1.0*   →     **3.9.2**
-- `@material-ui/icons`               *3.0.1*   →     **3.0.2**
-- `@types/googlemaps`              *3.30.13*   →   **3.30.16**
-- `ajv`                             *^5.0.0*   →     **6.9.1**
-- `prop-types`                      *15.6.2*   →    **15.7.1**
-- `react`                           *16.5.2*   →    **16.8.1**
-- `react-chartist`                  *0.13.1*   →    **0.13.3**
-- `react-dom`                       *16.5.2*   →    **16.8.1**
-- `react-scripts`                    *1.1.5*   →     **2.1.5**
-- `react-swipeable-views`          *0.12.17*   →    **0.13.1**
-- `eslint-config-prettier`           *3.0.1*   →     **4.0.0**
-- `eslint-plugin-prettier`           *2.6.2*   →     **3.0.1**
+## v175 (2020-08-13)
+- Install Yarn version at 1.22.x when not specified in package.json engines ([#817](https://github.com/heroku/heroku-buildpack-nodejs/pull/817))
+- Run `yarn install` for all Yarn 2 builds ([#819](https://github.com/heroku/heroku-buildpack-nodejs/pull/819))
+- Change all references from Yarn2 to Yarn 2 ([#824](https://github.com/heroku/heroku-buildpack-nodejs/pull/824))
+- Support Yarn 2 node modules ([#821](https://github.com/heroku/heroku-buildpack-nodejs/pull/821))
+- Detect for "node-modules" nodeLinker for Yarn 2 ([#828](https://github.com/heroku/heroku-buildpack-nodejs/pull/828))
 
-## [1.5.0] 2018-09-21
-### Nice stuff
-- Added `install:clean` command (deletes `node_modules` and `package-lock.json` and runs `npm install`)
-### Major style changes
-- `src/assets/jss/material-dashboard-react/components/tasksStyle.jsx`
-- `src/assets/jss/material-dashboard-react/checkboxAdnRadioStyle.jsx`
-- `src/assets/jss/material-dashboard-react/components/customTabsStyle.jsx`
-- `src/assets/jss/material-dashboard-react/components/snackbarContentStyle.jsx`
-### Deleted dependencies
-- `@babel/runtime v7.0.0-beta.55`
-### Added dependencies
-### Updated dependencies
-- `@material-ui/core`          *1.4.3*   →     **3.1.0**
-- `@material-ui/icons`         *2.0.1*   →     **3.0.1**
-- `@types/googlemaps`        *3.30.11*   →   **3.30.13**
-- `ajv`                        *6.5.2*   →     **5.0.0** (to stop some warnings)
-- `react`                     *16.4.1*   →    **16.5.2**
-- `react-dom`                 *16.4.1*   →    **16.5.2**
-- `react-scripts`              *1.1.4*   →     **1.1.5**
-- `react-swipeable-views`    *0.12.15*   →   **0.12.17**
-- `eslint-config-prettier`    *^2.9.0*   →    **3.0.1**
-- `eslint-plugin-react`      *^7.10.0*   →   **7.11.1**
-- `prettier`                 *^1.13.7*   →   **1.14.3**
+## v174 (2020-07-23)
+- provide custom binary url for node and yarn binary downloads ([#804](https://github.com/heroku/heroku-buildpack-nodejs/pull/804))
+- allow skipping node_modules removal with SKIP_NODE_MODULES_CHECK ([#798](https://github.com/heroku/heroku-buildpack-nodejs/pull/798))
+- expand npm ci usage to 75% of builds ([#812](https://github.com/heroku/heroku-buildpack-nodejs/pull/812))
 
-## [1.4.1] 2018-08-10
-### Bug Fixing
-- Github solved issues:
-  - `https://github.com/creativetimofficial/material-dashboard-react/issues/58`
-- Changed the `GridContainer` component
-### Major style changes
-- `src/assets/jss/material-dashboard-react/components/footerStyle.jsx`
-- `src/assets/jss/material-dashboard-react/components/headerStyle.jsx`
-### Added dependencies
-- `@babel/runtime v7.0.0-beta.55`
-### Update dependencies
-- `@material-ui/core v1.4.1` to `@material-ui/core v1.4.3`
-- `@material-ui/icons v2.0.0` to `@material-ui/icons v2.0.1`
+## v173 (2020-07-16)
+- update docs URL when node modules are checked into git ([#794](https://github.com/heroku/heroku-buildpack-nodejs/pull/794))
+- move disabling yarn caching YARN_CACHE env var ([#796](https://github.com/heroku/heroku-buildpack-nodejs/pull/796))
+- use meta_get "node-package-manager" for reporting ([#802](https://github.com/heroku/heroku-buildpack-nodejs/pull/802))
+- change YARN_CACHE to USE_YARN_CACHE env var ([#803](https://github.com/heroku/heroku-buildpack-nodejs/pull/803))
+- create a pull request to merge Yarn 2 support ([#795](https://github.com/heroku/heroku-buildpack-nodejs/pull/795))
+- edits to Yarn 2 info and warning messaging ([#806](https://github.com/heroku/heroku-buildpack-nodejs/pull/806))
 
+### feature: Yarn 2 support
+- Add warning for detection of Yarn 2 usage with caching ([#755](https://github.com/heroku/heroku-buildpack-nodejs/pull/755))
+- Add warning for Yarn 2 usage, warn user of ignoring engine from package.json ([#761](https://github.com/heroku/heroku-buildpack-nodejs/pull/761))
+- Add warning for if .npmrc file exists when using Yarn 2 ([#764](https://github.com/heroku/heroku-buildpack-nodejs/pull/764))
+- Add warning for if .yarnrc file exists when using Yarn 2 ([#768](https://github.com/heroku/heroku-buildpack-nodejs/pull/768))
+- Add checks for Yarn 2 ([#759](https://github.com/heroku/heroku-buildpack-nodejs/pull/759))
+- Turn off production and ignore-script flags for Yarn 2 and add global vendored yarn alias ([775](https://github.com/heroku/heroku-buildpack-nodejs/pull/775))
+- Set `$YARN` to false when `$YARN2` is true ([#776](https://github.com/heroku/heroku-buildpack-nodejs/pull/776))
+- Skip writing to the cache and pruning of the node modules when Yarn 2 is used ([#785](https://github.com/heroku/heroku-buildpack-nodejs/pull/785))
+- Test use of packages in `.yarn/release` directory ([#786](https://github.com/heroku/heroku-buildpack-nodejs/pull/786))
 
-## [1.4.0] 2018-07-26
-### Bug Fixing
-- Added resize event listener for window ([see this issue here](https://github.com/creativetimofficial/ct-material-dashboard-pro-react/issues/40#issuecomment-406983150))
-- Added issues template file
-- Github solved issues:
-  - https://github.com/creativetimofficial/material-dashboard-react/issues/49 (dropped `react-popper` in favour of `@material-ui/core/Popper`)
-  - https://github.com/creativetimofficial/material-dashboard-react/issues/47
-  - https://github.com/creativetimofficial/material-dashboard-react/issues/45
-  - https://github.com/creativetimofficial/material-dashboard-react/issues/38
-  - https://github.com/creativetimofficial/material-dashboard-react/issues/37
-- Github enhancement issues:
-  - https://github.com/creativetimofficial/material-dashboard-react/issues/47 (read the [./README.md](./README.md) file)
-### Major style changes
-- Added styles for `svg`'s, **font-awesome** classes and `.material-icons` class inside
-  - `src/assets/jss/material-dashboard-react/views/dashboardStyle.jsx`
-  - `src/assets/jss/material-dashboard-react/components/buttonStyle.jsx`
-  - `src/assets/jss/material-dashboard-react/components/cardFooterStyle.jsx`
-  - `src/assets/jss/material-dashboard-react/components/cardHeaderStyle.jsx`
-  - `src/assets/jss/material-dashboard-react/components/headerLinksStyle.jsx`
-  - `src/assets/jss/material-dashboard-react/components/customTabsStyle.jsx`
-- Others
-  - `src/assets/jss/material-dashboard-react/tooltipStyle.jsx`
-  - `src/assets/jss/material-dashboard-react/dropdownStyle.jsx`
-### Dropped components
-- Dropped popper usage in favour of `@material-ui/core/Popper` (Changes in `src/components/Header/HeaderLinks.jsx`)
-### Added components
-- `src/components/Grid/GridContainer.jsx` (instead of MUI's `<Grid container...` component)
-### Deleted dependencies
-### Added dependencies
-### Update dependencies
-- `@material-ui/core v1.2.1` to `@material-ui/core v1.4.1`
-- `@material-ui/icons v1.1.0` to `@material-ui/icons v2.0.0`
-- `@types/googlemaps v3.30.9` to `@types/googlemaps v3.30.11`
-- `ajv v6.5.1` to `ajv v6.5.2`
-- `react v16.4.0` to `react v16.4.1`
-- `react-dom v16.4.0` to `react-dom v16.4.1`
-- `react-swipeable-views v0.12.13` to `react-swipeable-views v0.12.15`
+## v172 (2020-05-28)
+- display yarn engine log to build output when engine is provided in monorepo ([#771](https://github.com/heroku/heroku-buildpack-nodejs/pull/771))
+- move proxy issues section from readme to dev center ([#778](https://github.com/heroku/heroku-buildpack-nodejs/pull/778))
+- warn when NO_PROXY is not set to "amazonaws.com" and HTTP_PROXY or HTTPS_PROXY is set ([#782](https://github.com/heroku/heroku-buildpack-nodejs/pull/782))
+- add heroku cleanup script ([#788](https://github.com/heroku/heroku-buildpack-nodejs/pull/788))
+- add a build step for cleanup script and output to log file ([#790](https://github.com/heroku/heroku-buildpack-nodejs/pull/790))
 
+## v171 (2020-04-27)
+- Update Travis badge to `master` and other changes in README ([#753](https://github.com/heroku/heroku-buildpack-nodejs/pull/753))
+- Up feature flag test groups ([#758](https://github.com/heroku/heroku-buildpack-nodejs/pull/758))
+- Add Heroku-20 to the Travis test matrix ([#763](https://github.com/heroku/heroku-buildpack-nodejs/pull/763))
+- Add Node 14 plugin and rebuild 10, 12, and 13; Remove rebuilding of 8, 9, and 11 ([#767](https://github.com/heroku/heroku-buildpack-nodejs/pull/767))
+- Add spec support for Node 13 and 14 ([#766](https://github.com/heroku/heroku-buildpack-nodejs/pull/766))
 
-## [1.3.0] 2018-06-15
-### Bug Fixing
-- Changed import from `material-ui` to `@material-ui/core`
-- Droped `src/components/index.js`, and changed all the imports to separate ones
-- Renamed `ItemGrid` to `GridItem`
-### Major style changes
-- Moved the styles of `src/components/` inside `src/assets/jss/material-dashboard-react/components/`
-- Moved the styles of `src/layouts/` inside `src/assets/jss/material-dashboard-react/layouts/`
-- Moved the styles of `src/views/` inside `src/assets/jss/material-dashboard-react/views/`
-- Almost all styles have been changed more or less
-### Dropped components
-- `src/components/CustomButtons/IconButton.jsx` (instead use `src/components/CustomButtons/Button.jsx` with `justIcon` prop)
-- Some components from `src/components/Typography` (instead of these we've added some css to style the normal HTML tags)
-  - `src/components/Typography/A.jsx`
-  - `src/components/Typography/P.jsx`
-  - `src/components/Typography/Small.jsx`
-- All the cards from `src/components/Cards`
-  - `src/components/Cards/ChartCard.jsx`
-  - `src/components/Cards/ProfileCard.jsx`
-  - `src/components/Cards/RegularCard.jsx`
-  - `src/components/Cards/StatsCard.jsx`
-  - `src/components/Cards/TasksCard.jsx`
-### Added components
-- New card components (`src/components/Card/*`) instead of `src/components/Cards/*`
-  - `src/components/Card/Card.jsx`
-  - `src/components/Card/CardAvatar.jsx`
-  - `src/components/Card/CardBody.jsx`
-  - `src/components/Card/CardFooter.jsx`
-  - `src/components/Card/CardHeader.jsx`
-  - `src/components/Card/CardIcon.jsx`
-- `src/components/CustomTabs/CustomTabs.jsx` (instead of `src/components/Cards/TasksCard.jsx`)
-### Deleted dependencies
-- `material-ui@1.0.0-beta.41`
-### Added dependencies
-- `@material-ui/core@1.2.1` (instead of `material-ui@1.0.0-beta.41`)
-- `@types/googlemaps@3.30.9` to stop the warning: **npm WARN react-google-maps@9.4.5 requires a peer of @types/googlemaps@^3.0.0 but none is installed. You must install peer dependencies yourself.**
-- `@types/markerclustererplus@2.1.33` to stop the warning: **npm WARN react-google-maps@9.4.5 requires a peer of @types/markerclustererplus@^2.1.29 but none is installed. You must install peer dependencies yourself.**
-- `ajv@6.5.1` to stop the warning: **npm WARN ajv-keywords@3.2.0 requires a peer of ajv@^6.0.0 but none is installed. You must install peer dependencies yourself.**
-### Update dependencies
-- `@material-ui/icons@1.0.0-beta.42` to `@material-ui/icons@1.1.0`
-- `classnames@2.2.5` to `classnames@2.2.6`
-- `npm-run-all@4.1.2` to `npm-run-all@4.1.3`
-- `perfect-scrollbar@1.3.0` to `perfect-scrollbar@1.4.0`
-- `react@16.2.0` to `react@16.4.0`
-- `react-dom@16.2.0` to `react-dom@16.4.0`
-- `react-router-dom@4.2.2` to `react-router-dom@4.3.1`
-- `react-scripts@1.0.17` to `react-scripts@1.1.4`
-- `react-swipeable-views@0.12.12` to `react-swipeable-views@0.12.13`
+## v170 (2020-03-31)
+- Bump rake from 12.3.1 to 12.3.3 ([#742](https://github.com/heroku/heroku-buildpack-nodejs/pull/742))
+- Upgrade Go to 1.14 ([#744](https://github.com/heroku/heroku-buildpack-nodejs/pull/744))
+- Bump `npm ci` usage for installing dependencies to 20% ([#745](https://github.com/heroku/heroku-buildpack-nodejs/pull/745))
+- Detect Yarn 2 usage, produce error message, and fail build (until supported) ([#746](https://github.com/heroku/heroku-buildpack-nodejs/pull/746))
+- Compress yq binaries ([#748](https://github.com/heroku/heroku-buildpack-nodejs/pull/748))
+- Move etc/vendor to lib/vendor ([#750](https://github.com/heroku/heroku-buildpack-nodejs/pull/750))
 
-## [1.2.0] 2018-04-16
-### Bug Fixing
-- Renamed `src/containers/App/App.jsx` to `src/layouts/Dashboard/Dashboard.jsx`
-- Renamed `src/variables/styles.jsx` to `src/assets/jss/material-dashboard-react.jsx`
-- Moved all the files from `src/variables/styles/` to `src/assets/jss/material-dashboard-react/`
-- Changes caused by the upgrade of `material-ui`
-- Small bug fixing
-### Deleted dependencies
-- `material-ui-icons@1.0.0-beta.17`
-### Update dependencies
-- `material-ui@1.0.0-beta.34` to `material-ui@1.0.0-beta.41`
-### Added dependencies
-- `@material-ui/icons@1.0.0-beta.42`
+## v167 (2020-02-06)
+- Make minor upgrades to gems ([#735](https://github.com/heroku/heroku-buildpack-nodejs/pull/735))
+- Fix typo in failure metadata call ([#737](https://github.com/heroku/heroku-buildpack-nodejs/pull/737))
 
-## [1.1.0] 2018-02-23
-### Bug Fixing
-- PerfectScrollbar renders only on windows
-- Used [pretier](https://github.com/prettier/prettier) to make the code more readable
-- Optimized images sizes
-- Changed `classes={root:...}` to `classNames={...}` only where it had `classes={root:...}` and not like `classes={root:..., something:... ,...}`
-- Added `classnames()` to avoid doing brittle class name manipulation
-- Classes that do not need states were converted to functions
-- Moved the style variables in `src/variables/styles.jsx` and all the components styles in `src/variables/styles/{$componentNameStyle}.jsx` files
-- Added `-webkit-overflow-scrolling: touch` css for nice scrolling on mobile devices
-- Updated to latest `Material-UI` version (from `v1.0.0.beta30` to `v1.0.0.beta34`)
+## v166 (2019-12-16)
+- Add Node 13 metrics plugin ([#731](https://github.com/heroku/heroku-buildpack-nodejs/pull/731), [#732](https://github.com/heroku/heroku-buildpack-nodejs/pull/732))
+- Fix yarn cache feature flag ([#729](https://github.com/heroku/heroku-buildpack-nodejs/pull/729))
 
-## [1.0.0] 2018-01-29
-### Original Release
-- Added Material-UI as base framework
-- Added design from Material Dashboard by Creative Tim
+## v165 (2019-10-24)
+- Update README ([#725](https://github.com/heroku/heroku-buildpack-nodejs/pull/725))
+- Update default Node version to 12.x ([#724](https://github.com/heroku/heroku-buildpack-nodejs/pull/724))
+
+## v164 (2019-10-17)
+- Avoid issues in environments requiring proxies for all connections (#708)
+- Extend metadata module in preparation for bin/report work (#709)
+- Vendor the buildpack stdlib (#710)
+- Check the status code when listing S3 buckets (#711)
+- Rename script monitoring metadata (#719)
+- Extend bin/report (#718)
+
+## v163 (2019-09-12)
+- Add a minimal version of bin/report. Not user-facing (#700)
+
+## v162 (2019-09-03)
+- Replace broken kb.heroku.com links with help.heroku.com shortlinks (#698)
+
+## v161 (2019-08-15)
+- Expand A/B test of native yarn caching to 50% of apps (#695)
+
+## v160 (2019-08-07)
+- Roll out A/B test of native yarn caching to a small set of apps (#693)
+
+## v159 (2019-08-01)
+- Updates to metadata saved (#689, #690)
+- Add native yarn cache caching behind a flag (#691)
+
+## v158 (2019-07-10)
+- Don't suppress curl errors (#680)
+- Add logging to track yarn workspace usage (#685)
+- Log out number of js, jsx, and ts files (#686)
+
+## v157 (2019-06-17)
+- Prevent `HTTP_PROXY` env var from blocking version-resolution binary
+
+## v156 (2019-06-12)
+- Turn off npm ci experiment
+
+## v155 (2019-06-06)
+- Add metadata for build steps (#677)
+
+## v154 (2019-06-05)
+- Roll out A/B test of npm ci command to 5% of apps (#676)
+- Internal fixes (#674, #673)
+
+## v153 (2019-05-30)
+- Test new A/B testing module (#671, #672)
+
+## v152 (2019-05-28)
+- Replace nodebin usage in hatchet tests (#669)
+- Add ability to list all node or yarn releases (#668)
+
+## v151 (2019-05-28)
+- Deprecate nodebin in favor of go binary (#667)
+
+## v150 (2019-05-22)
+- Resolve more inconsistencies with version selection (#666)
+
+## v149 (2019-05-10)
+- Resolve the known behavior mismatches between nodebin and the go logic (#664)
+
+## v148 (2019-05-02)
+- Dark-launch new semver matching logic for node binaries (#663)
+
+## v147 (2019-05-01)
+- Dark-launch new semver matching logic for yarn binaries (#661)
+- Add node 12.x as a supported version for Node Metrics beta (#662)
+
+## v146 (2019-04-25)
+- Deprecate io.js as an alternative runtime (#658)
+- Prototyping new version resolution approach to replace Nodebin (#649 - #657)
+
+## v145 (2019-04-16)
+- Separate prebuild step in log output (#646)
+- Clean up script metrics and logging (#647)
+
+## v144 (2019-04-08)
+- Remove temporary wraning about "run build" change (#644)
+
+## v143 (2019-03-28)
+- Internal logging changes (#637, #631, #630)
+
+## v142 (2019-03-11)
+- Add temporary warning about "run build" when the build fails as well (#639)
+
+## v141 (2019-03-11)
+- Add temporary warning about "run build" change to log output (#636)
+
+## v140 (2019-03-11)
+- Run the build script by default (#628)
+
+## v139 (2019-03-04)
+- Make breaking change warning header brighter (#627)
+
+## v138 (2019-02-20)
+- Add new Build header (#625)
+- Fix yarn run error when script is empty string (#624)
+
+## v137 (2019-02-14)
+- Internal logging changes (#620, #618, #621)
+- Detect build scripts even when they are empty (#617)
+
+## v136 (2019-02-09)
+- Add warning for the upcoming run build change (#616)
+
+## v135 (2019-02-06)
+
+- Fix bug where failing builds on CI would not fail CI (#613)
+- Internal logging changes (#596, #600)
+
+## v134 (2018-12-20)
+
+- Internal changes (#593, #591)
+- Handle `$MEMORY_AVAILABLE` when `memory.limit_in_bytes` is nonsensically large (#531)
+
+## v133 (2018-11-28)
+
+- Add warning for flatmap-stream 404 failure (#590)
+
+## v132 (2018-11-12)
+
+- Quietly add new build script behavior behind a flag (#584, #585)
+- Move cache directory layout (#587)
+
+## v131 (2018-10-31)
+
+- Improve bin/detect error messages (#575)
+- Add support for Node 11 (#578, #582, #580)
+- Update default Node version to 10.x
+
+## v130 (2018-10-03)
+
+- Unpin Yarn from 1.9.x (#569)
+
+## v129 (2018-10-02)
+
+- Fix a bug with formatting (#572)
+- internal changes (#567)
+
+## v128 (2018-09-13)
+
+- Default to Yarn 1.9.x to avoid a bug (#568)
+
+## v127 (2018-09-13)
+
+- interal changes (#566)
+
+## v126 (2018-09-06)
+
+- Icrease Node memory default during builds (#561)
+- Rework output when caching directories (#559)
+- Only write export script if directory is writeable (#539)
+- Testing changes (#552, #557, #558)
+- Upgrade the Node Metrics plugin (#564)
+
+## v125 (2018-08-24)
+
+- Fix issue with old Node and metrics plugin (#555)
+
+## v124 (2018-08-23)
+
+- Add plugin for [Node.js Language Metrics](https://devcenter.heroku.com/articles/language-runtime-metrics-nodejs)
+
+## v123 (2018-03-14)
+
+- Internal logging changes
+
+## v122 (2018-03-13)
+
+- Internal logging changes
+
+## v121 (2018-03-02)
+
+- Skip pruning if `NPM_CONFIG_PRODUCTION` or `YARN_PRODUCTION` is defined (#529)
+
+## v120 (2018-03-01)
+
+- Skip pruning for versions of npm with known issues with git submodules (#528)
+- Add timing metrics (#527)
+
+## v119 (2018-02-28)
+
+- Install and prune devDependencies by default (#519)
+- [Breaking] Stop setting the env var `NPM_CONFIG_PRODUCTION=true` by default
+
+## v118 (2018-02-02)
+
+- Fix issue with `NODE_ENV` in CI (#513)
+
+## v117 (2018-01-31)
+
+- Fix bug with previous default cache directories fix for npm and yarn (#511)
+
+## v116 (2018-01-29)
+
+- Fix metrics typo (#510)
+
+## v115 (2017-01-25)
+
+- Add metrics to track new types of failure (#509)
+
+## v114 (2017-11-16)
+
+- Don't default to npm 5.x if the user already has npm >= 5 (#499)
+
+## v113 (2017-11-13)
+
+- Bump default version of Node to Node 8 (#497)
+
+## v112 (2017-11-13)
+
+- Move default Yarn and npm cache directories to a temporary dir (#459)
+- `LOG_CONCURRENCY` fix (#475)
+- Default Yarn to `1.x`
+- Add `BUILD_DIR` to env var blacklist
+
+## v111 (2017-09-06)
+
+- Move `WEB_CONCURRENCY` logic to separate file (#467)
+- Temporarily default Yarn to known-good version
+
+## v110 (2017-07-26)
+
+- Improve error messages when bin version requirements are invalid (#457)
+
+## v109 (2017-07-25)
+
+- Switch to using nodebin to download the node binary (#451)
+
+## v108 (2017-07-24)
+
+- Add `$STACK` to the cache signature (#445)
+- Log output now differentiates between an empty cache and a new cache signature (#448)
+- Remove the use of semver.io to bootstrap npm (#452)
+- Switch to using nodebin to download iojs binaries (#450)
+
+## v107 (2017-07-17)
+
+- Switch to using nodebin to download the yarn binary (#444)
+
+## v106 (2017-06-19)
+
+- Default to npm v5 if `package-lock.json` is present (#429)
+
+## v105 (2017-05-26)
+
+- Break the build if yarn and npm lockfiles are both included (#411)
+
+## v104 (2017-05-22)
+
+- Add `$PREBUILD` to cache signature (#405)
+- Check for `.heroku/node` existence (#384)
+- Add `NODE_ENV=test` to `test-compile` (#403)
+- Install `yarn` if a version is defined in `engines` (#404)
+
+## v101 (2017-04-26)
+
+- Instrument metrics logging
+- Undo the Prepend a leading 0 to `WEB_CONCURRENCY` change
+
+## v99 (2017-04-17)
+
+- Use yarn in CI tests if available
+- Prepend a leading 0 to `WEB_CONCURRENCY`
+
+## v98 (2017-01-31)
+
+- Default to the latest LTS node version (6.x)
+
+## v97 (2017-01-31)
+
+- Cache node_modules
+- No longer run `yarn check`
+
+## v96 (2017-01-27)
+
+- Clear caches from the slug
+- Warn, rather than failing, on a failed `yarn check`
+
+## v95 (2017-01-27)
+
+- Use cache directories instead of node_modules
+- Use yarn, if available, as part of the cache signature
+- Warn about yarn's youth and evolution on build failures
+- Link to opt-out of yarn instructions
+- Use `yarn list` instead of `yarn ls`
+- Hide final dep tree listings under a `NODE_VERBOSE` flag
+
+## v94 (2016-12-16)
+
+- Warn on yarn NODE_ENV and NPM_CONFIG incompatibility
+- Pass --ignore-engines flag to yarn to avoid hard failures
+
+## v93 (2016-12-16)
+
+- Use yarn instead of npm if yarn.lock file is present
+
+## v91 (2016-7-7)
+
+- Do not fail build on output errors
+- Do not prune before install (shrinkwrap unsupported by prune)
+- Extended warnings (missing dependencies, econnreset, no start)
+- Remove hard limit on WEB_CONCURRENCY (32)
+
+## v90 (2016-4-20)
+
+- Blacklists the LANG env var
+
+## v89 (2016-3-11)
+
+- Adds heroku-prebuild script
+- Adds heroku-postbuild script
+
+## v88 (2016-2-23)
+
+- Retries all curl requests
+- Use HTTPS for node binary downloads again
+
+## v87 (2015-11-03)
+
+Several edge-case fixes
+
+- Enables compiling the same directory multiple times
+- Updates tests for Node v5
+- Moves node_modules/.bin binaries to last on the PATH
+
+## v86 (2015-10-08)
+
+Fixes piped output buffering issues
+
+## v85 (2015-10-08)
+
+Fixes piped output buffering issues (unsuccessful)
+
+- https://github.com/heroku/heroku-buildpack-nodejs/issues/273
+
+## v84 (2015-10-08)
+
+Replaces sed with awk for output formatting
+
+- large output (from assets or npm 3) was crashing sed ('resource unavailable')
+
+## v83 (2015-10-05)
+
+Caching improvements
+
+- Fixes modules-checked-in reference URL
+- When cache restoration is disabled, empties the cache instead of saving it
+- Adds bower_components as a default cache target
+
+## v82 (2015-09-30)
+
+Detects bower+angular resolution failures
+Detects missing grunt/gulp/bower failures
+
+## v81 (2015-09-24)
+
+Supports WEB_CONCURRENCY=28 for Performance-L dynos
+
+## v80 (2015-08-14)
+
+Fixes not defaulting to `NODE_ENV=production` during runtime
+
+## v79 (2015-08-10)
+
+Supports WEB_CONCURRENCY for Performance-M dynos
+
+## v78 (2015-07-24)
+
+Defaults node environment to 'production'; bugfixes
+
+- Fix runtime signature cache invalidation
+- Provide error messaging for un-downloadable binaries
+- Default to NODE_ENV=production for both build and runtime
+- https://github.com/heroku/heroku-buildpack-nodejs/issues/60
+
+## v77 (2015-07-15)
+
+Npm bootstrapping skipped when using iojs.
+
+- Fixes https://github.com/heroku/heroku-buildpack-nodejs/issues/202
+
+## v76 (2015-06-23)
+
+Refactor to bring caching logic to the forefront.
+
+- Fixes cachDirectories issues
+- Addresses https://github.com/heroku/heroku-buildpack-nodejs/pull/231
+- Addresses https://github.com/heroku/heroku-buildpack-nodejs/issues/226
+- Simplifies detect (package.json required)
+
+## v75 (2015-04-24)
+
+Updated build failure and help messaging.
+
+## v74 (2015-04-24)
+
+Updated messaging.
+
+## v73 (2015-04-24)
+
+Disables cache restoration if node_modules already exists.
+
+## v72 (2015-04-23)
+
+Accepts `cacheDirectories` array in package.json to override default `node_modules` caching.
+
+- Documented at https://devcenter.heroku.com/articles/nodejs-support#cache-behavior
